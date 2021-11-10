@@ -1,0 +1,5 @@
+{
+    "collectCoverage":true,
+    "verbose": true,
+    "setupFilesAfterEnv": [  "<rootDir>/src/setupTests.js" ]
+}
