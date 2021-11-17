@@ -2,11 +2,11 @@
 
 This project is meant to make storing, streaming and sharing movies easy. Movie upload is an alternative to the outdated way of storing videos on usb sticks/hard drives/CD's. If you choose to only store your videos on a local storing unit, you are at high risk! It has been proven too many times how unreliable these storing units actually are. You may choose to still do this, regardless of all the facts, but be prepared to lose all of your precious videos.
 
-Movie upload is here to solve these problem, using cloud storage, which is much more:
+Movie upload is here to solve these problem, using cloud storage, which is much more:\
 -usable & accessible\
--convenient
--secure
--cost efficient
+-convenient\
+-secure\
+-cost efficient\
 
 You can access your videos anywhere, on any device. Your data is protected with proper SSL encryption. You only pay for what you are actually using.
 
