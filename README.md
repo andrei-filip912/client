@@ -6,7 +6,7 @@ Movie upload is here to solve these problem, using cloud storage, which is much 
 -usable & accessible\
 -convenient\
 -secure\
--cost efficient\
+-cost efficient
 
 You can access your videos anywhere, on any device. Your data is protected with proper SSL encryption. You only pay for what you are actually using.
 
@@ -23,7 +23,7 @@ Installs all the according npm packages, so you can run the app.
 Creates a build optimized for production, which can be found in the `build` folder.
 The build is minified and the filenames include the hashes.
 
-The project is built assuming it is hosted at /.
+The project is built assuming it is hosted at `/`.
 You can control this with the homepage field in your package.json
 
 ### `npm run start`
@@ -37,7 +37,7 @@ You will also see any lint errors in the console.
 ### `npm run test`
 
 Launches the test runner in the interactive watch mode. Any change made to the files will rerun the tests.\
-See the according documentation [running tests](https://jestjs.io/ro/docs/getting-started), for more information.
+See the jest [documentation](https://jestjs.io/ro/docs/getting-started), for more information.
 
 
 ## Learn More
