@@ -1,9 +1,9 @@
 # Movie upload
 
-This project is meant to make storing, streaming and sharing movies easy. Movie upload is an alternative to the outdated way of storing videos on usb sticks/hard drives/CD's. If you choose to only store your videos on a local storing unit, you are at high risk! It has been proven too many times how unreliable these storing units actually are. You may choose to still do this, regardless of all the facts, but be prepared to lose all of your precious videos.\
+This project is meant to make storing, streaming and sharing movies easy. Movie upload is an alternative to the outdated way of storing videos on usb sticks/hard drives/CD's. If you choose to only store your videos on a local storing unit, you are at high risk! It has been proven too many times how unreliable these storing units actually are. You may choose to still do this, regardless of all the facts, but be prepared to lose all of your precious videos.
 
 Movie upload is here to solve these problem, using cloud storage, which is much more:
--usable & accessible
+-usable & accessible\
 -convenient
 -secure
 -cost efficient
@@ -21,7 +21,7 @@ Installs all the according npm packages, so you can run the app.
 ### `npm run build`
 
 Creates a build optimized for production, which can be found in the `build` folder.
-The build is minified and the filenames include the hashes.\
+The build is minified and the filenames include the hashes.
 
 The project is built assuming it is hosted at /.
 You can control this with the homepage field in your package.json
