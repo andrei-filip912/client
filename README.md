@@ -10,6 +10,11 @@ Movie upload is here to solve these problem, using cloud storage, which is much 
 
 You can access your videos anywhere, on any device. Your data is protected with proper SSL encryption. You only pay for what you are actually using.
 
+## Repo Summary:
+
+In the repository you can find the front end of the **Movie upload** project. It is done using React.
+
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -40,8 +45,18 @@ Launches the test runner in the interactive watch mode. Any change made to the f
 See the jest [documentation](https://jestjs.io/ro/docs/getting-started), for more information.
 
 
+## Badge
+
+[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+## License
+
+Movie upload is  [MIT licensed]().
