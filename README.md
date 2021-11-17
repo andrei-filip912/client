@@ -59,4 +59,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## License
 
-Movie upload is  [MIT licensed]().
+Movie upload is  [MIT licensed](https://github.com/andrei-filip912/client/blob/main/LICENSE).
