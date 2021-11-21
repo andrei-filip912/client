@@ -12,7 +12,8 @@ You can access your videos anywhere, on any device. Your data is protected with 
 
 ## Repo Summary:
 
-In the repository you can find the front end of the **Movie upload** project. It is done using React.
+In the repository you can find the front end of the **Movie upload** project.\
+It is done using React.
 
 
 ## Available Scripts
@@ -25,10 +26,10 @@ Installs all the according npm packages, so you can run the app.
 
 ### `npm run build`
 
-Creates a build optimized for production, which can be found in the `build` folder.
+Creates a build optimized for production, which can be found in the `build` folder.\
 The build is minified and the filenames include the hashes.
 
-The project is built assuming it is hosted at `/`.
+The project is built assuming it is hosted at `/`.\
 You can control this with the homepage field in your package.json
 
 ### `npm run start`
