@@ -5,23 +5,19 @@ import { Button } from '@mui/material';
 import Loading from '../components/Loading';
 import axios from 'axios';
 
-const Movies = () => {
-	// const[token, setToken] = React.useState('');
-	const { getAccessTokenSilently } = useAuth0();
-	// const { user } = useAuth0();
+import '../index.css';
 
-	// useEffect(async () => {
-	// const stringToken = 'Bearer ' + await getAccessTokenSilently({
-	// 	audience: 'https://express.sample',
-	// 	scope: 'read:current_user'
-	// });
-	// 	setToken(stringToken);
-	// }, []);
+const Movies = () => {
+
+	const { getAccessTokenSilently } = useAuth0();
 
 	const {loading} = useAuth0();
 	if(loading){
 		return (<Loading/>);
 	}
+
+	const [message, setMessage] = useState('');
+	
 
 	async function getTokeString() {
 		return 'Bearer ' + await getAccessTokenSilently({
@@ -32,7 +28,7 @@ const Movies = () => {
 	function openFileDialog(){
 		let input = document.createElement('input');
 		input.type = 'file';
-		// input.accept = 'video/mp4,video/*';
+		input.accept = 'video/mp4';
 
 		input.onchange = _ => {
 			const file = Array.from(input.files)[0];
@@ -58,10 +54,18 @@ const Movies = () => {
 	}
 
 	async function sendToApi(file) {
+		// making sure the the user submits an mp4 file
+		if(validateFormat(file) === false)
+		{
+			setMessage('Please only upload videos');
+			return null;
+		}
+
 		// create formData object for the request body and attach the file to it
 		var formData = new FormData();
-		formData.append('image', file);
+		formData.append('movie', file);
 
+		// console.log(await getTokeString());
 		// sending the post request o the upload api
 		return axios.post(
 			'http://localhost:4000/upload',
@@ -72,20 +76,33 @@ const Movies = () => {
 					'Authorization': await getTokeString(),
 				}
 			})
-			.then(res => console.log(res))
-			.catch(err => console.log(err));
+			.then(res => 
+			{
+				setMessage(res.data.message);
+			})
+			.catch(err => setMessage('Something went wrong :('));
+	}
+
+	function validateFormat (file) {
+		if(file.type === 'video/mp4')
+			return true;
+		return false;
 	}
 
 	return (
 		<div>
-			<Button
-				variant="contained"
-				onClick={openFileDialog}
-				onDrop={(e) => {dropHandler(e);}}
-				onDragOver={(e) => {dragOverHandler(e);}}
-			>
-                    Upload
-			</Button>
+			<div>
+				<Button
+					variant="contained"
+					onClick={openFileDialog}
+					onDrop={(e) => {dropHandler(e);}}
+					onDragOver={(e) => {dragOverHandler(e);}}
+					className='inline'
+				>
+					Upload
+				</Button>
+				<div id='response' className='inline'>{message}</div>
+			</div>
 		</div>
 	);
 };
