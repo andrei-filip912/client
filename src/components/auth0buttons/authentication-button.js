@@ -7,7 +7,7 @@ import LogoutButton from './logout-button';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const AuthenticationButton = (props) => {
-	const { isAuthenticated } = useAuth0();
+	const { isAuthenticated, isLoading } = useAuth0();
 
 	return (
 		<div data-testid="auth-btn-1">

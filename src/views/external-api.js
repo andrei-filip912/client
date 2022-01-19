@@ -53,7 +53,7 @@ const ExternalApi = () => {
 					<h6 className="muted">Result</h6>
 					<div className="container-fluid">
 						<div className="row">
-							<code className="col-12 text-light bg-dark p-4">{message}</code>
+							<code className="col-12 text-light bg-dark p-4" data-testid="api-message">{message}</code>
 						</div>
 					</div>
 				</div>
