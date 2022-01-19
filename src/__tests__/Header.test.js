@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * @jest-environment jsdom
  */
@@ -9,11 +10,11 @@ import React from 'react';
 
 
 afterEach(() => {
-    cleanup();
+	cleanup();
 });
 
 test('should render Header component', () => {
-    render(<Header />);
-    const headerElement = screen.getByTestId('header-1');
-    expect(headerElement).toBeInTheDocument();
+	render(<Header />);
+	const headerElement = screen.getByTestId('header-1');
+	expect(headerElement).toBeInTheDocument();
 });
