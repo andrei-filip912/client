@@ -1,5 +1,6 @@
 {
     "collectCoverage":true,
     "verbose": true,
-    "setupFilesAfterEnv": [  "<rootDir>/src/setupTests.js" ]
+    "setupFilesAfterEnv": [  "<rootDir>/src/setupTests.js" ],
+    "testMatch": ["**/__tests__/**/*.test.js"]
 }

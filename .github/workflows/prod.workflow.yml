@@ -31,7 +31,7 @@ jobs:
     - name: Create npm build
       run: npm run build
 
-    - name: run tests
+    - name: run integration and unit tests
       run: npm run ciTest
     
     - name: Build & push Docker image
