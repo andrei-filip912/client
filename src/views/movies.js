@@ -4,6 +4,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { Button } from '@mui/material';
 import Loading from '../components/Loading';
 import axios from 'axios';
+import MovieList from '../components/MovieList';
+import requests from '../utils/requests';
 
 import '../index.css';
 
@@ -17,9 +19,13 @@ const Movies = () => {
 	}
 
 	const [message, setMessage] = useState('');
-	
+	const [token, setToken] = useState('');
 
-	async function getTokeString() {
+	useEffect(async() => {
+		setToken(await getTokenString());
+	}, [token]);
+
+	async function getTokenString() {
 		return 'Bearer ' + await getAccessTokenSilently({
 			audience: 'https://express.sample',
 			scope: 'read:current_user'
@@ -47,10 +53,14 @@ const Movies = () => {
 			sendToApi(file);
 		}
 	}
-
 	function dragOverHandler(ev) {
 		// Prevent default behavior (Prevent file from being opened)
 		ev.preventDefault();
+	}
+	function validateFormat (file) {
+		if(file.type === 'video/mp4')
+			return true;
+		return false;
 	}
 
 	async function sendToApi(file) {
@@ -65,15 +75,16 @@ const Movies = () => {
 		var formData = new FormData();
 		formData.append('movie', file);
 
-		// console.log(await getTokeString());
 		// sending the post request o the upload api
+		// to refactor for srp
+		const fetchUrl=requests.fetchUpload;
 		return axios.post(
 			'http://localhost:4000/upload',
 			formData,
 			{
 				headers : {
 					'Content-Type': 'multipart/form-data; boundary=--X--',
-					'Authorization': await getTokeString(),
+					'Authorization': await getTokenString(),
 				}
 			})
 			.then(res => 
@@ -82,13 +93,7 @@ const Movies = () => {
 			})
 			.catch(err => setMessage('Something went wrong :('));
 	}
-
-	function validateFormat (file) {
-		if(file.type === 'video/mp4')
-			return true;
-		return false;
-	}
-
+	// figrue out how to fix passing the token to axios.js sicne useState 
 	return (
 		<div>
 			<div>
@@ -103,6 +108,9 @@ const Movies = () => {
 				</Button>
 				<div id='response' className='inline'>{message}</div>
 			</div>
+			<MovieList fetchUrl={requests.fetchMovies} 
+				token={token}
+			/>
 		</div>
 	);
 };
