@@ -10,7 +10,6 @@ import Loading from './components/Loading';
 
 import Home from './views/Home';
 import Profile from './views/Profile';
-import ExternalApi from './views/external-api';
 import Movies from './views/movies';
 
 function App() {
@@ -28,7 +27,6 @@ function App() {
 					<Route path="/" exact component={Home} />
 					<ProtectedRoute path="/profile" component={Profile} />
 					<ProtectedRoute path="/movies" component={Movies} />
-					<Route path="/external-api" component={ExternalApi} />
 				</Switch>
 			</div>
 		</div>

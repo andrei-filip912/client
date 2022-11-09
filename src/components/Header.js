@@ -60,13 +60,6 @@ export default function MenuAppBar() {
 									Profile
 								</MenuItem>
 								<MenuItem
-									href="external-api"
-									component="a"
-									onClick={handleClose}
-								>
-									External Api
-								</MenuItem>
-								<MenuItem
 									href="movies"
 									component="a"
 									onClick={handleClose}
