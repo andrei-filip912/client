@@ -9,14 +9,15 @@ const MovieList = ({fetchUrl, token}) => {
 		if(token != '')
 		{
 			const result = await fetchMovies(fetchUrl, token);
+			console.log(result);
 			if(result != ([] || undefined))
 				setMovies(result);
 		}
-	}, [token]);
+	}, [token, movies]);
     
 	return (
 		<div>
-			<p>{movies ? movies :'No movies...'}</p>
+			<p>{movies}</p>
 		</div>
 	);
 };

@@ -18,9 +18,8 @@ const instance = axios.create(defaultOptions);
 // 	);
 // };
 
-export const fetchMovies = (fetchUrl, token) => {
-	
-
+// finish getting response from api
+export const  fetchMovies = async (fetchUrl, token) => {
 	instance.get(fetchUrl,{ headers: {'Authorization': token}});
 };
 
