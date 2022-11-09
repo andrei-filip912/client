@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios, { fetchMovies } from '../utils/axios';
-import requests from '../utils/requests';
 
 const MovieList = ({ movies }) => {
 

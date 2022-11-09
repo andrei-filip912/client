@@ -6,6 +6,8 @@ import Loading from '../components/Loading';
 import axios, { fetchMovies } from '../utils/axios';
 import MovieList from '../components/MovieList';
 import requests from '../utils/requests';
+import {Box} from '@material-ui/core';
+import MovieIcon from '@mui/icons-material/Movie';
 
 import '../index.css';
 
@@ -105,15 +107,27 @@ const Movies = () => {
 	return (
 		<div>
 			<div>
-				<Button
-					variant="contained"
-					onClick={openFileDialog}
-					onDrop={(e) => { dropHandler(e); }}
-					onDragOver={(e) => { dragOverHandler(e); }}
-					className='inline'
+				<Box
+					display="flex"
+					justifyContent="flex-end"
+					alignItems="flex-end"
+					mt={1}
+					mb={1}
 				>
-					Upload
-				</Button>
+					<Button
+						variant="contained"
+						onClick={openFileDialog}
+						onDrop={(e) => { dropHandler(e); }}
+						onDragOver={(e) => { dragOverHandler(e); }}
+						className='inline'
+						size='large'
+						startIcon={<MovieIcon/>}
+						style={{marginRight: '1%'}}
+					>
+						Upload
+					</Button>
+				</Box>
+
 				<div id='response' className='inline'>{message}</div>
 			</div>
 			<MovieList
