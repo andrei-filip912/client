@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import ReactPlayer from 'react-player';
+import { Card, CardMedia, CardContent, Typography } from '@material-ui/core';
 
 const MovieList = ({ movies }) => {
 
@@ -13,10 +15,27 @@ const MovieList = ({ movies }) => {
 		setHtml(
 			movies.map(element => {
 				return (
-					<div key={element._id}>
-						<h3>{element.name}</h3>
-						<p>{element.url}</p>
-					</div>
+					<Card
+						key={element._id}
+						variant="outlined"
+						sx={{ width: '34%' }}
+					>
+						<CardMedia
+						>
+							<ReactPlayer
+								url={element.url}
+								controls={true}
+								width='100%'
+							/>
+						</CardMedia>
+
+						<CardContent>
+							<Typography variant="title" color="text.primary">
+								{element.name}
+							</Typography>
+						</CardContent>
+
+					</Card>
 				);
 			})
 		);
