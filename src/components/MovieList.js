@@ -1,23 +1,32 @@
-import React,{useState, useEffect} from 'react';
-import axios, {fetchMovies} from '../utils/axios';
+import React, { useState, useEffect } from 'react';
+import axios, { fetchMovies } from '../utils/axios';
 import requests from '../utils/requests';
 
-const MovieList = ({fetchUrl, token}) => {
-	const [movies, setMovies] = useState([]);
+const MovieList = ({ movies }) => {
 
-	useEffect(async () => {
-		if(token != '')
-		{
-			const result = await fetchMovies(fetchUrl, token);
-			console.log(result);
-			if(result != ([] || undefined))
-				setMovies(result);
+	const [html, setHtml] = useState('');
+
+	useEffect(() => {
+		if (!movies) {
+			setHtml(<p>No movies ...</p>);
+			return;
 		}
-	}, [token, movies]);
-    
+
+		setHtml(
+			movies.map(element => {
+				return (
+					<div key={element._id}>
+						<h3>{element.name}</h3>
+						<p>{element.url}</p>
+					</div>
+				);
+			})
+		);
+	}, [movies]);
+
 	return (
 		<div>
-			<p>{movies}</p>
+			{html}
 		</div>
 	);
 };

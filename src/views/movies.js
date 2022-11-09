@@ -1,9 +1,9 @@
-import React,	{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useAuth0 } from '@auth0/auth0-react';
 import { Button } from '@mui/material';
 import Loading from '../components/Loading';
-import axios from 'axios';
+import axios, { fetchMovies } from '../utils/axios';
 import MovieList from '../components/MovieList';
 import requests from '../utils/requests';
 
@@ -13,25 +13,35 @@ const Movies = () => {
 
 	const { getAccessTokenSilently } = useAuth0();
 
-	const {loading} = useAuth0();
-	if(loading){
-		return (<Loading/>);
+	const { loading } = useAuth0();
+	if (loading) {
+		return (<Loading />);
 	}
 
 	const [message, setMessage] = useState('');
 	const [token, setToken] = useState('');
+	const [movies, setMovies] = useState('');
 
-	useEffect(async() => {
-		setToken(await getTokenString());
-	}, [token]);
+	useEffect(async () => {
 
-	async function getTokenString() {
-		return 'Bearer ' + await getAccessTokenSilently({
+		const rawToken = await getAccessTokenSilently({
 			audience: 'https://express.sample',
 			scope: 'read:current_user'
 		});
-	}
-	function openFileDialog(){
+
+		setToken('Bearer ' + rawToken);
+	}, []);
+
+	useEffect(async () => {
+		if (token) {
+			// const res = await fetchMovies(requests.fetchMovies, token);
+			const { data } = await axios.get('http://localhost:4000/movies', { headers: { 'Authorization': token } });
+			console.log(data.result);
+			setMovies(data.result);
+		}
+	}, [token]);
+
+	function openFileDialog() {
 		let input = document.createElement('input');
 		input.type = 'file';
 		input.accept = 'video/mp4';
@@ -57,16 +67,15 @@ const Movies = () => {
 		// Prevent default behavior (Prevent file from being opened)
 		ev.preventDefault();
 	}
-	function validateFormat (file) {
-		if(file.type === 'video/mp4')
+	function validateFormat(file) {
+		if (file.type === 'video/mp4')
 			return true;
 		return false;
 	}
 
 	async function sendToApi(file) {
 		// making sure the the user submits an mp4 file
-		if(validateFormat(file) === false)
-		{
+		if (validateFormat(file) === false) {
 			setMessage('Please only upload videos');
 			return null;
 		}
@@ -77,18 +86,17 @@ const Movies = () => {
 
 		// sending the post request o the upload api
 		// to refactor for srp
-		const fetchUrl=requests.fetchUpload;
+		const fetchUrl = requests.fetchUpload;
 		return axios.post(
 			'http://localhost:4000/upload',
 			formData,
 			{
-				headers : {
+				headers: {
 					'Content-Type': 'multipart/form-data; boundary=--X--',
-					'Authorization': await getTokenString(),
+					'Authorization': token,
 				}
 			})
-			.then(res => 
-			{
+			.then(res => {
 				setMessage(res.data.message);
 			})
 			.catch(err => setMessage('Something went wrong :('));
@@ -100,16 +108,16 @@ const Movies = () => {
 				<Button
 					variant="contained"
 					onClick={openFileDialog}
-					onDrop={(e) => {dropHandler(e);}}
-					onDragOver={(e) => {dragOverHandler(e);}}
+					onDrop={(e) => { dropHandler(e); }}
+					onDragOver={(e) => { dragOverHandler(e); }}
 					className='inline'
 				>
 					Upload
 				</Button>
 				<div id='response' className='inline'>{message}</div>
 			</div>
-			<MovieList fetchUrl={requests.fetchMovies} 
-				token={token}
+			<MovieList
+				movies={movies}
 			/>
 		</div>
 	);
