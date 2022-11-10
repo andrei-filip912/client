@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardMedia, CardContent, Typography, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import VideoCard from './VideoCard';
-import { Box } from '@material-ui/core';
 
 const MovieList = ({ movies }) => {
 

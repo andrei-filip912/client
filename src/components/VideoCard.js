@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
-import { Card, CardMedia, CardContent, Typography } from '@material-ui/core';
+import {Card, CardMedia, CardContent, Typography } from '@mui/material';
+
 /* eslint-disable */
 
 function VideoCard({url, name }) {

@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Button } from '@mui/material';
 import Loading from '../components/Loading';
-import axios, { fetchMovies } from '../utils/axios';
+import axios from '../utils/axios';
 import MovieList from '../components/MovieList';
 import requests from '../utils/requests';
-import {Box} from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import MovieIcon from '@mui/icons-material/Movie';
 
 import '../index.css';
@@ -41,7 +41,7 @@ const Movies = () => {
 			console.log(data.result);
 			setMovies(data.result);
 		}
-	}, [token]);
+	}, [token, message]);
 
 	function openFileDialog() {
 		let input = document.createElement('input');
@@ -114,6 +114,12 @@ const Movies = () => {
 					mt={1}
 					mb={1}
 				>
+					<div
+						id='response'
+						style={{ margin: 'auto' }}
+					>
+						<b>{message}</b>
+					</div>
 					<Button
 						variant="contained"
 						onClick={openFileDialog}
@@ -121,14 +127,14 @@ const Movies = () => {
 						onDragOver={(e) => { dragOverHandler(e); }}
 						className='inline'
 						size='large'
-						startIcon={<MovieIcon/>}
-						style={{marginRight: '1%'}}
+						startIcon={<MovieIcon />}
+						style={{ marginRight: '1%' }}
 					>
 						Upload
 					</Button>
 				</Box>
 
-				<div id='response' className='inline'>{message}</div>
+
 			</div>
 			<MovieList
 				movies={movies}
