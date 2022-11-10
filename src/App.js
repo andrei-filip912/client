@@ -9,7 +9,6 @@ import Header from './components/Header';
 import Loading from './components/Loading';
 
 import Home from './views/Home';
-import Profile from './views/Profile';
 import Movies from './views/movies';
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
 			<div className="container flex-grow-1">
 				<Switch>
 					<Route path="/" exact component={Home} />
-					<ProtectedRoute path="/profile" component={Profile} />
 					<ProtectedRoute path="/movies" component={Movies} />
 				</Switch>
 			</div>

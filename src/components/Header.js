@@ -56,9 +56,6 @@ export default function MenuAppBar() {
 								<MenuItem href="/" component="a" onClick={handleClose}>
 									Home
 								</MenuItem>
-								<MenuItem href="profile" component="a" onClick={handleClose}>
-									Profile
-								</MenuItem>
 								<MenuItem
 									href="movies"
 									component="a"
