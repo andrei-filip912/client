@@ -12,22 +12,22 @@ import Home from './views/Home';
 import Movies from './views/movies';
 
 function App() {
-	const {isLoading} = useAuth0();
+	const { isLoading } = useAuth0();
 
-	if(isLoading){
-		return <Loading/>;
+	if (isLoading) {
+		return <Loading />;
 	}
 
 	return (
-		<div className="">
-			<Header/>
-			<div className="container flex-grow-1">
+		<>
+			<Header />
+			<div className="main-div">
 				<Switch>
 					<Route path="/" exact component={Home} />
 					<ProtectedRoute path="/movies" component={Movies} />
 				</Switch>
 			</div>
-		</div>
+		</>
 	);
 }
 
