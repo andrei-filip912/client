@@ -13,8 +13,14 @@ function Content() {
 
 	return (
 		<div className='main-child'>
+			<div className='top'>
+				<p>asd</p>
+			</div>
+			<div className='bottom'>
 
+			</div>
 		</div>
+
 
 		// <div className="">
 		// 				<p>Let&apos;s get you started</p>
