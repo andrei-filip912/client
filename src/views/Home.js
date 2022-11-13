@@ -19,7 +19,7 @@ function Content() {
 	const { isAuthenticated } = useAuth0();
 
 	return (
-		<div className='main-child'>
+		<div className='main-child light-blue-bgr'>
 			<div className='top'>
 				<div className='landing-text'>
 					<h1 className='landing-title'>Store your memories in a safe place and access then anytime from anywhere!</h1>

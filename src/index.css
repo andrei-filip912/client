@@ -23,8 +23,10 @@ body,
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    background-color: #99bbf2;
     flex: 1;
+}
+.light-blue-bgr {
+    background-color: #99bbf2;
 }
 
 .top {
@@ -73,4 +75,11 @@ body,
 .landing-image img {
     max-width: 280px;
     max-height: 280px;
+}
+
+.upload-btn {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }

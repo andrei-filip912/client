@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 
 import { useAuth0 } from '@auth0/auth0-react';
@@ -6,7 +7,6 @@ import Loading from '../components/Loading';
 import axios from '../utils/axios';
 import MovieList from '../components/MovieList';
 import requests from '../utils/requests';
-import { Box } from '@material-ui/core';
 import MovieIcon from '@mui/icons-material/Movie';
 
 import '../index.css';
@@ -42,6 +42,12 @@ const Movies = () => {
 			setMovies(data.result);
 		}
 	}, [token, message]);
+
+	useEffect(() => {
+		if(message != '') {
+			alert(message);
+		}
+	}, [message])
 
 	function openFileDialog() {
 		let input = document.createElement('input');
@@ -103,43 +109,31 @@ const Movies = () => {
 			})
 			.catch(err => setMessage('Something went wrong :('));
 	}
-	// figrue out how to fix passing the token to axios.js sicne useState 
+
 	return (
-		<div>
-			<div>
-				<Box
-					display="flex"
-					justifyContent="flex-end"
-					alignItems="flex-end"
-					mt={1}
-					mb={1}
+		<div className='main-child'>
+			<div
+				className='upload-btn'
+			>
+				<Button
+					variant="contained"
+					onClick={openFileDialog}
+					onDrop={(e) => { dropHandler(e); }}
+					onDragOver={(e) => { dragOverHandler(e); }}
+					className=' inline'
+					size='large'
+					startIcon={<MovieIcon />}
 				>
-					<div
-						id='response'
-						style={{ margin: 'auto' }}
-					>
-						<b>{message}</b>
-					</div>
-					<Button
-						variant="contained"
-						onClick={openFileDialog}
-						onDrop={(e) => { dropHandler(e); }}
-						onDragOver={(e) => { dragOverHandler(e); }}
-						className='inline'
-						size='large'
-						startIcon={<MovieIcon />}
-						style={{ marginRight: '1%' }}
-					>
-						Upload
-					</Button>
-				</Box>
-
-
+					Upload
+				</Button>
 			</div>
+
+
 			<MovieList
 				movies={movies}
 			/>
 		</div>
+
 	);
 };
 
