@@ -9,7 +9,7 @@ import Header from './components/Header';
 import Loading from './components/Loading';
 
 import Home from './views/Home';
-import Movies from './views/movies';
+import Movies from './views/Movies';
 
 function App() {
 	const { isLoading } = useAuth0();
