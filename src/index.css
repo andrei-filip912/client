@@ -4,7 +4,8 @@
     box-sizing: border-box;
 }
 
-body, #root {
+body,
+#root {
     --navHeight: 64px;
 
     height: 100vh;
@@ -27,17 +28,49 @@ body, #root {
 }
 
 .top {
-    height: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 60%;
     width: 100%;
     padding-left: 5%;
     padding-right: 5%;
-    padding-top: 5%;
+
 }
 
 .bottom {
-    height: 50%;
+    max-height: 40%;
     width: 100%;
-    padding-bottom: 5%;
     padding-left: 5%;
     padding-right: 5%;
+}
+
+.landing-text {
+    width: 65%;
+    height: 100%;
+    padding-top: 10%;
+    padding-right: 2.5%;
+    color: white;
+}
+
+.landing-text p {
+    padding-bottom: 5%;
+}
+
+.landing-title {
+    text-shadow: 0.5px 0 0 #000, 0 -0.5px 0 #000, 0 0.5px 0 #000, -0.5px 0 0 #000;
+    padding-bottom: 2%;
+}
+
+.landing-image {
+    width: 35%;
+    height: 100%;
+    padding-top: 2.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing-image img {
+    max-width: 280px;
+    max-height: 280px;
 }
