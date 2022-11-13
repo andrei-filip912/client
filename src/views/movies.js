@@ -35,17 +35,13 @@ const Movies = () => {
 	}, []);
 
 	useEffect(async () => {
-		if (token) {
-			// const res = await fetchMovies(requests.fetchMovies, token);
-			const { data } = await axios.get('http://localhost:4000/movies', { headers: { 'Authorization': token } });
-			console.log(data.result);
-			setMovies(data.result);
-		}
+		updateMovies();
 	}, [token, message]);
 
 	useEffect(() => {
 		if(message != '') {
 			alert(message);
+			updateMovies();
 		}
 	}, [message])
 
@@ -108,6 +104,13 @@ const Movies = () => {
 				setMessage(res.data.message);
 			})
 			.catch(err => setMessage('Something went wrong :('));
+	}
+
+	async function updateMovies() {
+		if (token) {
+			const { data } = await axios.get('http://localhost:4000/movies', { headers: { 'Authorization': token } });
+			setMovies(data.result);
+		}
 	}
 
 	return (
