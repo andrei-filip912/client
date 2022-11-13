@@ -30,22 +30,23 @@ const MovieList = ({ movies }) => {
 							/>
 						</div>
 					</Grid>
-
 				);
 			})
 		);
 	}, [movies]);
 
 	return (
-		<div>
+		<>
 			<Grid
 				container
-				spacing={3}
-				style={{paddingLeft: '40px', paddingRight: '40px'}}
+				spacing={8}
+				xs={12}
+				style={{ paddingLeft: '5%' }}
 			>
 				{html}
 			</Grid>
-		</div>
+
+		</>
 	);
 };
 

@@ -9,25 +9,25 @@ import Header from './components/Header';
 import Loading from './components/Loading';
 
 import Home from './views/Home';
-import Movies from './views/movies';
+import Movies from './views/Movies';
 
 function App() {
-	const {isLoading} = useAuth0();
+	const { isLoading } = useAuth0();
 
-	if(isLoading){
-		return <Loading/>;
+	if (isLoading) {
+		return <Loading />;
 	}
 
 	return (
-		<div className="">
-			<Header/>
-			<div className="container flex-grow-1">
+		<>
+			<Header />
+			<div className="main-div">
 				<Switch>
 					<Route path="/" exact component={Home} />
 					<ProtectedRoute path="/movies" component={Movies} />
 				</Switch>
 			</div>
-		</div>
+		</>
 	);
 }
 
